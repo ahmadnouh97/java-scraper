@@ -6,41 +6,22 @@ public class Product {
     private String code;
     private String highlight = "";
     private String imageUrl = "";
-    private String category;
-    private int price;
-    private float weight = 0;
-    private String dimensions = "";
+    private String collection = "";
+    private float price;
 
-    public String getDimensions() {
-        return dimensions;
+    public Product(String url, String name, String code, float price) {
+        this.url = url;
+        this.name = name;
+        this.code = code;
+        this.price = price;
     }
 
-    public void setDimensions(String dimensions) {
-        this.dimensions = dimensions;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getImageUrl() {
@@ -81,5 +62,24 @@ public class Product {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "url: " + this.url + "\n" +
+                "name: " + this.name + "\n" +
+                "code: " + this.code + "\n" +
+                "price: " + this.price + "\n" +
+                "collection: " + this.collection + "\n" +
+                "imageUrl: " + this.imageUrl + "\n" +
+                "highlight: " + this.highlight.length() + "\n";
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 }
