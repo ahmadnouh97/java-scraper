@@ -19,7 +19,7 @@ public class CollectionsFetcher {
             for (Element div : collectionDivTags) {
                 Elements collectionATags = div.getElementsByTag("a");
                 for (Element aTag : collectionATags) {
-                    String link = url + aTag.attr("href");
+                        String link = aTag.attr("href");
                     collectionsLinks.add(link);
                 }
             }
