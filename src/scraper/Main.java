@@ -1,5 +1,7 @@
 package scraper;
 
+import models.Product;
+
 import java.io.FileReader;
 import java.util.Properties;
 import java.util.ArrayList;
@@ -18,15 +20,12 @@ public class Main {
     public static void main(String[] args) {
         Properties properties = loadProperties();
         String url = properties.getProperty("app.scrapingUrl");
-        ArrayList<String> collections = CollectionsFetcher.fetchAllCollectionsFromUrl(url);
+        ArrayList<String> collectionsLinks = CollectionsFetcher.fetchAllCollectionsFromUrl(url);
 
-        String collectionUrl = collections.get(0);
-        System.out.println(collectionUrl);
+        String collectionUrl = collectionsLinks.get(0);
+        ArrayList<String> products = CollectionProductFetcher.fetchAllCollectionProducts(url + "/ar" + collectionUrl);
+        Product product = ProductFetcher.fetchProductData(url + products.get(0));
+        System.out.println(product);
 
-        //        ArrayList<String> products = CollectionProductFetcher.fetchAllCollectionProducts(collectionUrl);
-        //
-        //        for (String product : products) {
-        //            System.out.println(product);
-        //        }
     }
 }
