@@ -11,7 +11,7 @@ public class CollectionProductFetcher {
     public static ArrayList<String> fetchAllCollectionProducts(String url) {
         ArrayList<String> collectionProducts = new ArrayList<>();
         Document doc = DocumentFetcher.getDocumentFromUrl(url);
-        Element productsListTag = doc.getElementById("models.product-loop");
+        Element productsListTag = doc.getElementById("product-loop");
 
         Elements aTags = null;
         if (productsListTag != null) {
