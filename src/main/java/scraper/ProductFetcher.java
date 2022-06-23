@@ -1,4 +1,4 @@
-package scraper;
+package main.java.scraper;
 
 import models.Product;
 import org.jsoup.nodes.Document;
