@@ -1,2 +1,7 @@
 app.scrapingUrl=https://www.matajeronline.com
-app.scrapingSleepTime=3
+app.scrapingSleepTime=2
+
+app.dbHost=localhost
+app.dbPort=27017
+app.dbName=matajer-db
+app.dbCollectionName=products
