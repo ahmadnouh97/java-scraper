@@ -1,4 +1,4 @@
-package main.java.scraper;
+package scraper;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,14 +11,19 @@ public class CollectionProductFetcher {
     public static ArrayList<String> fetchAllCollectionProducts(String url) {
         ArrayList<String> collectionProducts = new ArrayList<>();
         Document doc = DocumentFetcher.getDocumentFromUrl(url);
+        if (doc == null) {
+            return collectionProducts;
+        }
         Element productsListTag = doc.getElementById("product-loop");
 
-        Elements aTags = null;
         if (productsListTag != null) {
-            aTags = productsListTag.select("a[href]");
-            for (Element aTag : aTags) {
-                String product = aTag.attr("href");
-                collectionProducts.add(product);
+            Elements listItemTags = productsListTag.getElementsByTag("li");
+            for (Element itemTag : listItemTags) {
+                Element aTag = itemTag.getElementsByTag("a").first();
+                if (aTag != null) {
+                    String product = aTag.attr("href");
+                    collectionProducts.add(product);
+                }
             }
         }
         return collectionProducts;

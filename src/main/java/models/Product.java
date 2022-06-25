@@ -1,5 +1,9 @@
 package models;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.util.Map;
+
 public class Product {
     private String url;
     private String name;
@@ -64,6 +68,14 @@ public class Product {
         this.url = url;
     }
 
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
+    }
+
     @Override
     public String toString() {
         return "url: " + this.url + "\n" +
@@ -75,11 +87,8 @@ public class Product {
                 "highlight: " + this.highlight.length() + "\n";
     }
 
-    public String getCollection() {
-        return collection;
-    }
-
-    public void setCollection(String collection) {
-        this.collection = collection;
+    public Map toMap() {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.convertValue(this, Map.class);
     }
 }

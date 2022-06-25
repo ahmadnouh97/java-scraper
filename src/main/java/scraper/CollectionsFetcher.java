@@ -1,4 +1,4 @@
-package main.java.scraper;
+package scraper;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,7 +19,7 @@ public class CollectionsFetcher {
             for (Element div : collectionDivTags) {
                 Elements collectionATags = div.getElementsByTag("a");
                 for (Element aTag : collectionATags) {
-                        String link = aTag.attr("href");
+                    String link = aTag.attr("href");
                     collectionsLinks.add(link);
                 }
             }
